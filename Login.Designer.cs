@@ -174,7 +174,7 @@ namespace Programming251_Project
             this.btnReg_lgn.BackColor = System.Drawing.Color.LimeGreen;
             this.btnReg_lgn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnReg_lgn.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReg_lgn.Location = new System.Drawing.Point(143, 277);
+            this.btnReg_lgn.Location = new System.Drawing.Point(143, 274);
             this.btnReg_lgn.Name = "btnReg_lgn";
             this.btnReg_lgn.Size = new System.Drawing.Size(106, 46);
             this.btnReg_lgn.TabIndex = 12;

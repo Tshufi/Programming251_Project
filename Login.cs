@@ -56,7 +56,7 @@ namespace Programming251_Project
             {
                 label1.Show();
                 label1.ForeColor = Color.Green;
-                label1.Text = "Correct Details! You can proceed to login";
+                label1.Text = "Correct! You can proceed to login";
             }
             else
             {

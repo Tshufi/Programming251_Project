@@ -68,7 +68,7 @@ namespace Programming251_Project
             this.btnExt_Reg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExt_Reg.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExt_Reg.Font = new System.Drawing.Font("Arial Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExt_Reg.Location = new System.Drawing.Point(505, 314);
+            this.btnExt_Reg.Location = new System.Drawing.Point(641, 387);
             this.btnExt_Reg.Name = "btnExt_Reg";
             this.btnExt_Reg.Size = new System.Drawing.Size(147, 70);
             this.btnExt_Reg.TabIndex = 27;

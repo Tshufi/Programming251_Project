@@ -30,8 +30,19 @@ namespace Programming251_Project
         private void btnLgn_Click(object sender, EventArgs e)
         {
             View_Update_Delete sf = new View_Update_Delete();
-            sf.Show();
-            this.Hide();
+            string question = "Do you want to see the list of students?";
+            string title = "See student details";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(question, title, buttons);
+            if (result == DialogResult.OK)
+            {
+                sf.Show();
+                this.Hide();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void txtBPwsd_lgn_TextChanged(object sender, EventArgs e)

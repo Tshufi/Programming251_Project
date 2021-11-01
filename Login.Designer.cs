@@ -212,6 +212,8 @@ namespace Programming251_Project
             this.Controls.Add(this.lblPwsd_lgn);
             this.Controls.Add(this.lblStn_lgn);
             this.Controls.Add(this.lblLogin);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);

@@ -31,6 +31,7 @@ namespace Programming251_Project
         {
             this.btnExt_Reg = new System.Windows.Forms.Button();
             this.gBMds = new System.Windows.Forms.GroupBox();
+            this.txtBDesc = new System.Windows.Forms.TextBox();
             this.btnClr_Mdl_Reg = new System.Windows.Forms.Button();
             this.btnSmt_Mdl = new System.Windows.Forms.Button();
             this.txtBMn = new System.Windows.Forms.TextBox();
@@ -39,11 +40,13 @@ namespace Programming251_Project
             this.lblMn = new System.Windows.Forms.Label();
             this.lblMdc = new System.Windows.Forms.Label();
             this.gBStd = new System.Windows.Forms.GroupBox();
-            this.txtBStn = new System.Windows.Forms.TextBox();
-            this.labelStn = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtBAddr = new System.Windows.Forms.TextBox();
+            this.btnbrwsr = new System.Windows.Forms.Button();
             this.txtBCpswd_Reg = new System.Windows.Forms.TextBox();
             this.lblCpswd_Reg = new System.Windows.Forms.Label();
             this.btnClr_St_Reg = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSmt_St = new System.Windows.Forms.Button();
             this.txtBPswd_Reg = new System.Windows.Forms.TextBox();
             this.txtBPhn = new System.Windows.Forms.TextBox();
@@ -58,13 +61,9 @@ namespace Programming251_Project
             this.lblDob = new System.Windows.Forms.Label();
             this.lblSrn = new System.Windows.Forms.Label();
             this.lblNm = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ImageText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnbrwsr = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.rTBDesc = new System.Windows.Forms.RichTextBox();
-            this.rTBAddr = new System.Windows.Forms.RichTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.gBMds.SuspendLayout();
             this.gBStd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -76,7 +75,7 @@ namespace Programming251_Project
             this.btnExt_Reg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExt_Reg.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExt_Reg.Font = new System.Drawing.Font("Arial Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExt_Reg.Location = new System.Drawing.Point(487, 530);
+            this.btnExt_Reg.Location = new System.Drawing.Point(487, 434);
             this.btnExt_Reg.Name = "btnExt_Reg";
             this.btnExt_Reg.Size = new System.Drawing.Size(147, 70);
             this.btnExt_Reg.TabIndex = 0;
@@ -86,7 +85,7 @@ namespace Programming251_Project
             // 
             // gBMds
             // 
-            this.gBMds.Controls.Add(this.rTBDesc);
+            this.gBMds.Controls.Add(this.txtBDesc);
             this.gBMds.Controls.Add(this.btnClr_Mdl_Reg);
             this.gBMds.Controls.Add(this.btnSmt_Mdl);
             this.gBMds.Controls.Add(this.txtBMn);
@@ -95,18 +94,26 @@ namespace Programming251_Project
             this.gBMds.Controls.Add(this.lblMn);
             this.gBMds.Controls.Add(this.lblMdc);
             this.gBMds.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBMds.Location = new System.Drawing.Point(34, 435);
+            this.gBMds.Location = new System.Drawing.Point(34, 383);
             this.gBMds.Name = "gBMds";
-            this.gBMds.Size = new System.Drawing.Size(289, 254);
+            this.gBMds.Size = new System.Drawing.Size(289, 191);
             this.gBMds.TabIndex = 28;
             this.gBMds.TabStop = false;
             this.gBMds.Text = "Modules";
+            // 
+            // txtBDesc
+            // 
+            this.txtBDesc.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBDesc.Location = new System.Drawing.Point(107, 92);
+            this.txtBDesc.Name = "txtBDesc";
+            this.txtBDesc.Size = new System.Drawing.Size(169, 20);
+            this.txtBDesc.TabIndex = 23;
             // 
             // btnClr_Mdl_Reg
             // 
             this.btnClr_Mdl_Reg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClr_Mdl_Reg.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClr_Mdl_Reg.Location = new System.Drawing.Point(168, 208);
+            this.btnClr_Mdl_Reg.Location = new System.Drawing.Point(168, 135);
             this.btnClr_Mdl_Reg.Name = "btnClr_Mdl_Reg";
             this.btnClr_Mdl_Reg.Size = new System.Drawing.Size(108, 40);
             this.btnClr_Mdl_Reg.TabIndex = 3;
@@ -118,15 +125,17 @@ namespace Programming251_Project
             // 
             this.btnSmt_Mdl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSmt_Mdl.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSmt_Mdl.Location = new System.Drawing.Point(10, 208);
+            this.btnSmt_Mdl.Location = new System.Drawing.Point(10, 135);
             this.btnSmt_Mdl.Name = "btnSmt_Mdl";
             this.btnSmt_Mdl.Size = new System.Drawing.Size(108, 40);
             this.btnSmt_Mdl.TabIndex = 4;
             this.btnSmt_Mdl.Text = "&Submit";
             this.btnSmt_Mdl.UseVisualStyleBackColor = true;
+            this.btnSmt_Mdl.Click += new System.EventHandler(this.btnSmt_Mdl_Click);
             // 
             // txtBMn
             // 
+            this.txtBMn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBMn.Location = new System.Drawing.Point(107, 60);
             this.txtBMn.Name = "txtBMn";
             this.txtBMn.Size = new System.Drawing.Size(169, 20);
@@ -134,6 +143,7 @@ namespace Programming251_Project
             // 
             // txtBMdc
             // 
+            this.txtBMdc.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBMdc.Location = new System.Drawing.Point(107, 31);
             this.txtBMdc.Name = "txtBMdc";
             this.txtBMdc.Size = new System.Drawing.Size(169, 20);
@@ -171,11 +181,10 @@ namespace Programming251_Project
             // 
             // gBStd
             // 
-            this.gBStd.Controls.Add(this.rTBAddr);
+            this.gBStd.Controls.Add(this.textBox1);
             this.gBStd.Controls.Add(this.label3);
-            this.gBStd.Controls.Add(this.txtBStn);
+            this.gBStd.Controls.Add(this.txtBAddr);
             this.gBStd.Controls.Add(this.btnbrwsr);
-            this.gBStd.Controls.Add(this.labelStn);
             this.gBStd.Controls.Add(this.txtBCpswd_Reg);
             this.gBStd.Controls.Add(this.lblCpswd_Reg);
             this.gBStd.Controls.Add(this.btnClr_St_Reg);
@@ -194,34 +203,50 @@ namespace Programming251_Project
             this.gBStd.Controls.Add(this.lblDob);
             this.gBStd.Controls.Add(this.lblSrn);
             this.gBStd.Controls.Add(this.lblNm);
+            this.gBStd.Controls.Add(this.ImageText);
             this.gBStd.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gBStd.Location = new System.Drawing.Point(34, 26);
             this.gBStd.Name = "gBStd";
-            this.gBStd.Size = new System.Drawing.Size(754, 396);
+            this.gBStd.Size = new System.Drawing.Size(754, 338);
             this.gBStd.TabIndex = 29;
             this.gBStd.TabStop = false;
             this.gBStd.Text = "Student Details";
             this.gBStd.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // txtBStn
+            // label3
             // 
-            this.txtBStn.Location = new System.Drawing.Point(117, 12);
-            this.txtBStn.Name = "txtBStn";
-            this.txtBStn.Size = new System.Drawing.Size(159, 20);
-            this.txtBStn.TabIndex = 0;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(450, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(172, 15);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "Please select your image for the school";
             // 
-            // labelStn
+            // txtBAddr
             // 
-            this.labelStn.AutoSize = true;
-            this.labelStn.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStn.Location = new System.Drawing.Point(12, 16);
-            this.labelStn.Name = "labelStn";
-            this.labelStn.Size = new System.Drawing.Size(87, 14);
-            this.labelStn.TabIndex = 37;
-            this.labelStn.Text = "Student Number:";
+            this.txtBAddr.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBAddr.Location = new System.Drawing.Point(117, 237);
+            this.txtBAddr.Name = "txtBAddr";
+            this.txtBAddr.Size = new System.Drawing.Size(159, 20);
+            this.txtBAddr.TabIndex = 0;
+            // 
+            // btnbrwsr
+            // 
+            this.btnbrwsr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnbrwsr.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbrwsr.Location = new System.Drawing.Point(464, 292);
+            this.btnbrwsr.Name = "btnbrwsr";
+            this.btnbrwsr.Size = new System.Drawing.Size(108, 40);
+            this.btnbrwsr.TabIndex = 9;
+            this.btnbrwsr.Text = "&Browser";
+            this.btnbrwsr.UseVisualStyleBackColor = true;
+            this.btnbrwsr.Click += new System.EventHandler(this.btnbrwsr_Click);
             // 
             // txtBCpswd_Reg
             // 
+            this.txtBCpswd_Reg.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBCpswd_Reg.Location = new System.Drawing.Point(117, 125);
             this.txtBCpswd_Reg.Name = "txtBCpswd_Reg";
             this.txtBCpswd_Reg.PasswordChar = '*';
@@ -243,7 +268,7 @@ namespace Programming251_Project
             // 
             this.btnClr_St_Reg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClr_St_Reg.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClr_St_Reg.Location = new System.Drawing.Point(168, 345);
+            this.btnClr_St_Reg.Location = new System.Drawing.Point(168, 284);
             this.btnClr_St_Reg.Name = "btnClr_St_Reg";
             this.btnClr_St_Reg.Size = new System.Drawing.Size(108, 40);
             this.btnClr_St_Reg.TabIndex = 10;
@@ -251,11 +276,22 @@ namespace Programming251_Project
             this.btnClr_St_Reg.UseVisualStyleBackColor = true;
             this.btnClr_St_Reg.Click += new System.EventHandler(this.btnClr_St_Reg_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(316, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(418, 241);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // btnSmt_St
             // 
             this.btnSmt_St.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSmt_St.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSmt_St.Location = new System.Drawing.Point(10, 345);
+            this.btnSmt_St.Location = new System.Drawing.Point(10, 284);
             this.btnSmt_St.Name = "btnSmt_St";
             this.btnSmt_St.Size = new System.Drawing.Size(108, 40);
             this.btnSmt_St.TabIndex = 11;
@@ -265,6 +301,7 @@ namespace Programming251_Project
             // 
             // txtBPswd_Reg
             // 
+            this.txtBPswd_Reg.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBPswd_Reg.Location = new System.Drawing.Point(117, 96);
             this.txtBPswd_Reg.Name = "txtBPswd_Reg";
             this.txtBPswd_Reg.PasswordChar = '*';
@@ -274,6 +311,7 @@ namespace Programming251_Project
             // 
             // txtBPhn
             // 
+            this.txtBPhn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBPhn.Location = new System.Drawing.Point(117, 209);
             this.txtBPhn.Name = "txtBPhn";
             this.txtBPhn.Size = new System.Drawing.Size(159, 20);
@@ -291,6 +329,7 @@ namespace Programming251_Project
             // 
             // txtBGnd
             // 
+            this.txtBGnd.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBGnd.Location = new System.Drawing.Point(117, 180);
             this.txtBGnd.Name = "txtBGnd";
             this.txtBGnd.Size = new System.Drawing.Size(159, 20);
@@ -298,6 +337,7 @@ namespace Programming251_Project
             // 
             // txtBDob
             // 
+            this.txtBDob.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBDob.Location = new System.Drawing.Point(117, 154);
             this.txtBDob.Name = "txtBDob";
             this.txtBDob.Size = new System.Drawing.Size(159, 20);
@@ -305,6 +345,7 @@ namespace Programming251_Project
             // 
             // txtBSrn
             // 
+            this.txtBSrn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBSrn.Location = new System.Drawing.Point(117, 64);
             this.txtBSrn.Name = "txtBSrn";
             this.txtBSrn.Size = new System.Drawing.Size(159, 20);
@@ -312,6 +353,7 @@ namespace Programming251_Project
             // 
             // txtBNm
             // 
+            this.txtBNm.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBNm.Location = new System.Drawing.Point(117, 38);
             this.txtBNm.Name = "txtBNm";
             this.txtBNm.Size = new System.Drawing.Size(159, 20);
@@ -377,82 +419,36 @@ namespace Programming251_Project
             this.lblNm.TabIndex = 18;
             this.lblNm.Text = "Name:";
             // 
-            // pictureBox1
+            // ImageText
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(316, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(418, 241);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
+            this.ImageText.Location = new System.Drawing.Point(316, 19);
+            this.ImageText.Name = "ImageText";
+            this.ImageText.Size = new System.Drawing.Size(418, 20);
+            this.ImageText.TabIndex = 40;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(138, 425);
+            this.label1.Location = new System.Drawing.Point(138, 368);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 30;
             this.label1.Text = "Alert user";
             this.label1.Visible = false;
             // 
-            // label2
+            // textBox1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(26, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(202, 15);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Create you own student number.Numbers only";
-            // 
-            // btnbrwsr
-            // 
-            this.btnbrwsr.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnbrwsr.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbrwsr.Location = new System.Drawing.Point(464, 345);
-            this.btnbrwsr.Name = "btnbrwsr";
-            this.btnbrwsr.Size = new System.Drawing.Size(108, 40);
-            this.btnbrwsr.TabIndex = 9;
-            this.btnbrwsr.Text = "&Browser";
-            this.btnbrwsr.UseVisualStyleBackColor = true;
-            this.btnbrwsr.Click += new System.EventHandler(this.btnbrwsr_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Narrow", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(450, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(172, 15);
-            this.label3.TabIndex = 39;
-            this.label3.Text = "Please select your image for the school";
-            // 
-            // rTBDesc
-            // 
-            this.rTBDesc.Location = new System.Drawing.Point(107, 86);
-            this.rTBDesc.Name = "rTBDesc";
-            this.rTBDesc.Size = new System.Drawing.Size(169, 104);
-            this.rTBDesc.TabIndex = 2;
-            this.rTBDesc.Text = "";
-            // 
-            // rTBAddr
-            // 
-            this.rTBAddr.Location = new System.Drawing.Point(117, 235);
-            this.rTBAddr.Name = "rTBAddr";
-            this.rTBAddr.Size = new System.Drawing.Size(159, 104);
-            this.rTBAddr.TabIndex = 8;
-            this.rTBAddr.Text = "";
+            this.textBox1.Location = new System.Drawing.Point(464, 266);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(108, 20);
+            this.textBox1.TabIndex = 41;
             // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Plum;
-            this.ClientSize = new System.Drawing.Size(800, 694);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(800, 589);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gBStd);
             this.Controls.Add(this.gBMds);
@@ -502,12 +498,11 @@ namespace Programming251_Project
         private System.Windows.Forms.TextBox txtBPswd_Reg;
         private System.Windows.Forms.Label lblPswd_Reg;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtBStn;
-        private System.Windows.Forms.Label labelStn;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtBAddr;
         private System.Windows.Forms.Button btnbrwsr;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox rTBDesc;
-        private System.Windows.Forms.RichTextBox rTBAddr;
+        private System.Windows.Forms.TextBox ImageText;
+        private System.Windows.Forms.TextBox txtBDesc;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

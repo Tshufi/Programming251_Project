@@ -29,14 +29,14 @@ namespace Programming251_Project
 
         private void btnLgn_Click(object sender, EventArgs e)
         {
-            View_Update_Delete sf = new View_Update_Delete();
-            string question = "Do you want to see the list of students?";
+            View_Update_Delete vud = new View_Update_Delete();
+            string question = "Do you want to see the list of students?\nIf not, the Apllication will close";
             string title = "See student details";
             MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
             DialogResult result = MessageBox.Show(question, title, buttons);
             if (result == DialogResult.OK)
             {
-                sf.Show();
+                vud.Show();
                 this.Hide();
             }
             else
@@ -47,12 +47,7 @@ namespace Programming251_Project
 
         private void txtBPwsd_lgn_TextChanged(object sender, EventArgs e)
         {
-            
-        }
-
-        private void txtBCpwsd_lgn_TextChanged(object sender, EventArgs e)
-        {
-            if (txtBPwsd_lgn.Text == txtBCpwsd_lgn.Text)
+            if (txtBPwsd_lgn.Text == txtBPwsd_lgn.Text)
             {
                 label1.Show();
                 label1.ForeColor = Color.Green;
@@ -72,5 +67,7 @@ namespace Programming251_Project
             sf.Show();
             this.Hide();
         }
+        
+        //DataClasses1DataContext db = new DataClasses1DataContext();
     }
 }

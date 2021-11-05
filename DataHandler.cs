@@ -6,117 +6,133 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace Programming251_Project
 {
     class DataHandler
     {
+        public DataHandler() { }
         string dbConnection = "Data Source=LAPTOP-UQGNKHFE;Initial Catalog=ProjectDB;Integrated Security=True";
         SqlConnection conn;
         SqlCommand cmd;
-        SqlDataReader reader;
-        //public void SearchData(int studentNumber, string name, string surname, string password, string picture, DateTime dateOfBirth, string gender, int phone, string address)
-        //{
-        //    try
-        //    {
-        //        string query = $"SELECT * FROM ProjectDB.Students WHERE [Student Number] = ({studentNumber})";
-        //        cmd = new SqlCommand(query, conn);
-        //        cmd.Parameters.AddWithValue("[Student Number]", studentNumber);
-        //        reader = cmd.ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            name = reader["[Student Number]"].ToString();
-        //            surname = reader["Surname"].ToString();
-        //            password = reader[""].ToString();
-        //            picture = reader[""].ToString();
-        //            dateOfBirth = reader[""].ToDateTime();
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error! " + ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
-        //}
-                                                                                                        //Ask mam -- What is the correct datatype to use for storing the image there
-        public void InsertingStudentData(int studentNumber, string name, string surname, string password, string picture, DateTime dateOfBirth, string gender, int phone, string address)
+        SqlDataAdapter ad;
+        DataTable dt;
+        public DataTable SearchData(int studentNumber)
         {
-            string query = $"INSERT INTO ProjectDB.Students ([Student Number], Name, Surname, Password, Picture, [Date of Birth], Gender, Phone, Address)" +
-                           $"VALUES({studentNumber}, {name}, {surname}, HASHBYTES('SHAI' '{password}'), {picture}, {dateOfBirth}, {gender}, {phone}, {address})";
-                                                                      //This is an increption for the password
-            conn = new SqlConnection(dbConnection);
-            cmd = new SqlCommand(query, conn);
+            string query = $"SELECT * FROM Students WHERE [Student Number] = ({studentNumber})";
             try
             {
-                conn.Open();
-                reader = cmd.ExecuteReader();
-                MessageBox.Show("Details of a new student saved!"," Please add details of Module");
-                while (reader.Read())
-                {
-
-                }
+                conn = new SqlConnection(dbConnection);
+                ad = new SqlDataAdapter(query, conn);
+                dt = new DataTable();
+                ad.Fill(dt);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erorr! "+ex.Message);
+                MessageBox.Show("Error! " + ex.Message);
             }
-            finally
-            {
-                conn.Close();
-            }
+            return dt;
         }
-        public void InsertingModuleData(string moduleCode, string name, string description)
+
+        public DataTable DisplayData()
         {
-            string query = $"INSERT INTO ProjectDB.Modules ([Module Code], Name, Description) VALUES({moduleCode}, {name}, {description})";
+            string query = "SELECT * FROM Students";
+            try
+            {
+                conn = new SqlConnection(dbConnection);
+                ad = new SqlDataAdapter(query, conn);
+                dt = new DataTable();
+                ad.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return dt;
+        }
+        
+        public string InsertingStudentData(string name, string surname, string password, Image picture, DateTime dateOfBirth, string gender, int phone, string address)
+        {
+            string query = $"INSERT INTO Students (Name, Surname, Password, Picture, [Date of Birth], Gender, Phone, Address)" +
+                           $"VALUES({name}, {surname}, {password}, {picture}, {dateOfBirth}, {gender}, {phone}, {address})";
             conn = new SqlConnection(dbConnection);
             cmd = new SqlCommand(query, conn);
+            MemoryStream ms = new MemoryStream();
             try
             {
                 conn.Open();
-                reader = cmd.ExecuteReader();
-                MessageBox.Show("Great, All data has been saved!", " Please add details of Module");
+                picture.Save(ms, ImageFormat.Jpeg);
+                byte[] picArr = new byte[ms.Length];
+                ms.Position = 0;
+                ms.Read(picArr, 0, picArr.Length);
+                cmd.Parameters.AddWithValue("Picture", picArr);
+                cmd.ExecuteReader();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            conn.Close();
+            return "Details of the new student saved!\nPlease note it down and keep it safe. It will be of use to" +
+                   "access the school's facilities\n\nNow, please add details of Module";
+        }
+
+        public DataTable InsertingModuleData(string moduleCode, string name, string description)
+        {
+            string query = $"INSERT INTO ProjectDB.Modules ([Module Code], Name, Description) VALUES({moduleCode}, {name}, {description})";
+            try
+            {
+                conn = new SqlConnection(dbConnection);
+                ad = new SqlDataAdapter(query, conn);
+                dt = new DataTable();
+                ad.Fill(dt);
+                MessageBox.Show("Great, All data has been saved!\nDo you want to see the list of students?\nIf not, the Apllication will close", "Question", MessageBoxButtons.OKCancel);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erorr! " + ex.Message);
             }
-            finally
-            {
-                conn.Close();
-            }
+            conn.Close();
+            return dt;
         }
 
-        public void DeletingData(int studentNumber)
+        public DataTable DeletingData(int studentNumber)
         {
+            string query = $"DELETE FROM Students WHERE [Student Number] = ({studentNumber})";
             try
             {
-                string query = $"DELETE FROM ProjectDB.Students WHERE [Student Number] = ({studentNumber})";
                 conn = new SqlConnection(dbConnection);
-                conn.Open();
-                cmd = new SqlCommand();
-                cmd.ExecuteNonQuery();
+                ad = new SqlDataAdapter(query, conn);
+                dt = new DataTable();
+                ad.Fill(dt);
                 MessageBox.Show("Student has been deleted!");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error! "+ex.Message);
+                MessageBox.Show("Error! " + ex.Message);
             }
-            finally
+            return dt;
+        }
+
+        public DataTable UpdateData(int studentNumber, string name, string surname, string password, Image picture, DateTime dateOfBirth, string gender, int phone, string address)
+        {
+            string query = $"UPDATE Students SET Name = {name}, Surname = {surname}, Password = {password}, Picture = {picture}, [Date of Birth] = ({dateOfBirth}), Gender = {gender}, Phone = {phone}, Address = {address} WHERE [Student Number] = {studentNumber}";
+            try
             {
-                conn.Close();
+                conn = new SqlConnection(dbConnection);
+                ad = new SqlDataAdapter(query, conn);
+                dt = new DataTable();
+                ad.Fill(dt);
+                MessageBox.Show("Student has been updated!");
             }
-        }
-        public void UpdateData()
-        {
-
-        }
-        public void ClearData(GroupBox control)
-        {
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error! " + ex.Message);
+            }
+            return dt;
         }
     }
 }

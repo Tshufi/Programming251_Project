@@ -8,12 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Programming251_Project
 {
     public partial class Registration : Form
     {
         DataHandler dh = new DataHandler();
+        string fileName;
+
         public Registration()
         {
             InitializeComponent();
@@ -42,13 +45,27 @@ namespace Programming251_Project
 
         private void btnSmt_St_Click(object sender, EventArgs e)
         {
-            if (pictureBox1.Image is null)
+            
+            using (OpenFileDialog odf = new OpenFileDialog() { Filter = "JPG|*.jpg", ValidateNames = true, Multiselect = false })
+
             {
-                MessageBox.Show("Please select your image first before submitting!");
-            }
-            else
-            {
-                dh.InsertingStudentData(int.Parse(txtBStn.Text), txtBNm.Text, txtBSrn.Text, txtBPswd_Reg.Text, pictureBox1.ImageLocation, DateTime.Parse(txtBDob.Text), txtBGnd.Text, int.Parse(txtBPhn.Text), rTBAddr.Text);
+                if (odf.ShowDialog() == DialogResult.OK)
+                {
+                    fileName = odf.FileName;
+
+                    pictureBox1.Image = Image.FromFile(fileName);
+
+                    string name = Path.GetFileName(fileName);
+                    string[] name1 = name.Split('.');
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                    MessageBox.Show(dh.InsertingStudentData(txtBNm.Text, txtBSrn.Text, txtBPswd_Reg.Text, pictureBox1.Image, DateTime.Parse(txtBDob.Text), txtBGnd.Text, int.Parse(txtBPhn.Text), txtBAddr.Text));
+
+                }
+                if (pictureBox1.Image is null)
+                {
+                    MessageBox.Show("Please select your image first before submitting!");
+                }
             }
         }
 
@@ -64,13 +81,16 @@ namespace Programming251_Project
 
         private void btnbrwsr_Click(object sender, EventArgs e)
         {
-            string imgLocation = "";
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)|*.*";
+            //Image imgLocation = null;
+            OpenFileDialog dialog = new OpenFileDialog() { Filter = "JPG|*.jpg", ValidateNames = true, Multiselect = false }; 
+            //dialog.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)|*.*";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                imgLocation = dialog.FileName.ToString();
-                pictureBox1.ImageLocation = imgLocation;
+                fileName = dialog.FileName;
+                MessageBox.Show($"({fileName})");
+                //imgLocation = dialog.FileName.ToString();
+                pictureBox1.Image = Image.FromFile(fileName);
+                textBox1.Text = File.GetCreationTime(fileName).ToString();
             }
         }
         
@@ -97,6 +117,24 @@ namespace Programming251_Project
                     gBStd.Text = string.Empty;
                     c.ResetText();
                 }
+            }
+        }
+
+        private void btnSmt_Mdl_Click(object sender, EventArgs e)
+        {
+            dh.InsertingModuleData(txtBMdc.Text, txtBMn.Text, txtBDesc.Text);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openfd = new OpenFileDialog();
+            openfd.Filter = "Iamge Files(*.jpg;*.jpeg;*.gif;) | *.jpg;*.jpeg;*.gif;";
+            if (openfd.ShowDialog() == DialogResult.OK)
+            {
+                ImageText.Text = openfd.FileName;
+                pictureBox1.Image = new Bitmap(openfd.FileName);
+                pictureBox1.ImageLocation = openfd.FileName;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
     }

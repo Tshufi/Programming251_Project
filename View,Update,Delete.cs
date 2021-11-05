@@ -12,6 +12,7 @@ namespace Programming251_Project
 {
     public partial class View_Update_Delete : Form
     {
+        DataHandler dh = new DataHandler();
         public View_Update_Delete()
         {
             InitializeComponent();
@@ -22,17 +23,36 @@ namespace Programming251_Project
             Application.Exit();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            //dh.SearchData(int.Parse(txtBStn.Text), txtBNm.Text, txtBSrn.Text, txtBPswd_Reg.Text, txtB, DateTime.Parse(txtBDob.Text), txtBGnd.Text, int.Parse(txtBPhn.Text), txtBAddr.Text);
-            //if (txtBPswd_Reg != txtBCpswd_Reg)
-            //{
-            //    MessageBox.Show("Passwords don't match! Please re-enter");
-            //}
-            //if (reader.Read())
-            //{
-            //    studentNumber
-            //}
+            dGV.DataSource = dh.SearchData(int.Parse(textBoxSearch.Text));
+        }
+
+        private void btnVA_Click(object sender, EventArgs e)
+        {
+            dGV.DataSource = dh.DisplayData();
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            dh.DeletingData(int.Parse(textBoxDel.Text));
+        }
+
+        private void btnUpd_Click(object sender, EventArgs e)
+        {
+            dh.UpdateData(int.Parse(textBox1.Text), textBox2.Text, textBox3.Text, textBox4.Text, pictureBox1.Image, DateTime.Parse(textBox5.Text), textBox6.Text, int.Parse(textBox7.Text), textBox8.Text);
+        }
+
+        private void dGV_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            textBox1.Text = dGV.SelectedRows[0].Cells[0].Value.ToString();
+            textBox2.Text = dGV.SelectedRows[0].Cells[1].Value.ToString();
+            textBox3.Text = dGV.SelectedRows[0].Cells[2].Value.ToString();
+            textBox4.Text = dGV.SelectedRows[0].Cells[0].Value.ToString();
+            textBox5.Text = dGV.SelectedRows[0].Cells[1].Value.ToString();
+            textBox6.Text = dGV.SelectedRows[0].Cells[2].Value.ToString();
+            textBox7.Text = dGV.SelectedRows[0].Cells[0].Value.ToString();
+            textBox8.Text = dGV.SelectedRows[0].Cells[1].Value.ToString();
         }
     }
 }

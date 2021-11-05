@@ -12,6 +12,7 @@ namespace Programming251_Project
 {
     public partial class Login : Form
     {
+        FileHandler fh = new FileHandler();
         public Login()
         {
             InitializeComponent();
@@ -49,12 +50,15 @@ namespace Programming251_Project
         {
             if (txtBPwsd_lgn.Text == txtBPwsd_lgn.Text)
             {
+
+                fh.ReadingFileRightPassword(txtBPwsd_lgn.Text);
                 label1.Show();
                 label1.ForeColor = Color.Green;
                 label1.Text = "Correct! You can proceed to login";
             }
             else
             {
+                fh.ReadingFileWrongPassword(txtBPwsd_lgn.Text);
                 label1.Show();
                 label1.ForeColor = Color.Red;
                 label1.Text = "Passwords don't match. Please Re-enter...";
@@ -67,7 +71,5 @@ namespace Programming251_Project
             sf.Show();
             this.Hide();
         }
-        
-        //DataClasses1DataContext db = new DataClasses1DataContext();
     }
 }

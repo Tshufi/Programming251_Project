@@ -15,6 +15,7 @@ namespace Programming251_Project
     public partial class Registration : Form
     {
         DataHandler dh = new DataHandler();
+        FileHandler fh = new FileHandler();
         string fileName;
 
         public Registration()
@@ -71,7 +72,7 @@ namespace Programming251_Project
 
         private void txtBPswd_Reg_TextChanged(object sender, EventArgs e)
         {
-
+            fh.WritingToFile(txtBPswd_Reg.Text);
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -81,14 +82,11 @@ namespace Programming251_Project
 
         private void btnbrwsr_Click(object sender, EventArgs e)
         {
-            //Image imgLocation = null;
             OpenFileDialog dialog = new OpenFileDialog() { Filter = "JPG|*.jpg", ValidateNames = true, Multiselect = false }; 
-            //dialog.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)|*.*";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 fileName = dialog.FileName;
                 MessageBox.Show($"({fileName})");
-                //imgLocation = dialog.FileName.ToString();
                 pictureBox1.Image = Image.FromFile(fileName);
                 textBox1.Text = File.GetCreationTime(fileName).ToString();
             }
